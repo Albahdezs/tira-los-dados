@@ -1,6 +1,6 @@
 'use strict';
 
-// Selecting elements
+// Seleccionar elementos
 const player0El = document.querySelector('.player--0');
 const player1El = document.querySelector('.player--1');
 const score0El = document.getElementById('score--0');
@@ -15,7 +15,7 @@ const btnHold = document.querySelector('.btn--hold');
 
 let scores, currentScore, activePlayer, playing;
 
-// Starting conditions
+// Configuración inicial
 const init = function () {
   scores = [0, 0];
   currentScore = 0;
@@ -38,29 +38,30 @@ init();
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
   currentScore = 0;
-  activePlayer = activePlayer === 0 ? 1 : 0; // If it's player 0, changes to 1, if its 1 change to 0
+  activePlayer = activePlayer === 0 ? 1 : 0; // Cambiar el jugador activo
   player0El.classList.toggle('player--active'); // Alternar la clase player active
   player1El.classList.toggle('player--active');
 };
 
-// Rolling dice functionality
+// Funcionamidad de tirar el dado
 btnRoll.addEventListener('click', function () {
   if (playing) {
-    // 1. Generating a random dice roll
+    // 1. Generar un número aleatorio entre 1 y 6
     const dice = Math.trunc(Math.random() * 6) + 1;
 
-    // 2. Display dice
+    // 2. Mostrar el dado
     diceEl.classList.remove('hidden');
     diceEl.src = `dice-${dice}.png`;
 
-    // 3. Check for rolled 1
+    // 3. Comprobar si el dado es 1
+    // Si es 1, cambiar al siguiente jugador
     if (dice !== 1) {
-      // Add dice to current score
+      // Sumar el dado al puntaje actual
       currentScore += dice;
       document.getElementById(`current--${activePlayer}`).textContent =
         currentScore;
     } else {
-      // Switch to next player
+      // Si es 1, cambiar al siguiente jugador
       switchPlayer();
     }
   }
@@ -68,16 +69,16 @@ btnRoll.addEventListener('click', function () {
 
 btnHold.addEventListener('click', function () {
   if (playing) {
-    // 1. Add current score to active player's score
+    // 1. Agregar el puntaje actual al puntaje activo
     scores[activePlayer] += currentScore;
 
     // scores[1] = scores[1] + currentScore
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
 
-    // 2. Check if player's score is >= 100
+    // 2. Comprobar si el puntaje es >= 100
     if (scores[activePlayer] >= 100) {
-      // Finish game
+      // Terminar el juego
       playing = false;
       diceEl.classList.add('hidden');
 
@@ -88,7 +89,7 @@ btnHold.addEventListener('click', function () {
         .querySelector(`.player--${activePlayer}`)
         .classList.remove('player--active');
     } else {
-      // Switch to the next player
+      // Si no, cambiar al siguiente jugador
       switchPlayer();
     }
   }
