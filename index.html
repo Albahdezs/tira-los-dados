@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="style.css" />
     <title>Tira los dados</title>
   </head>
+
+  <div class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Instrucciones del Juego</h2>
+      <p>🎲 Cada jugador lanza los dados por turnos.</p>
+      <p>📥 Si no sacas un 1, puedes guardar tu puntuación.</p>
+      <p>💥 Si sacas un 1, pierdes tu turno y lo ganado ese turno.</p>
+      <p>🏆 El primer jugador en llegar a 100 puntos gana.</p>
+    </div>
+  </div>
+  <div class="overlay hidden"></div>
+  <button class="btn btn--info">ℹ️ Instrucciones</button>
+
   <body>
     <main>
       <section class="player player--0 player--active">

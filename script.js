@@ -96,3 +96,26 @@ btnHold.addEventListener('click', function () {
 });
 
 btnNew.addEventListener('click', init);
+
+// Modal
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnInfo = document.querySelector('.btn--info');
+const btnCloseModal = document.querySelector('.close-button');
+
+// Abrir el modal
+const openModal = () => {
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+
+// Cerrar el modal
+const closeModal = () => {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+
+// Eventos para abrir y cerrar el modal
+btnInfo.addEventListener('click', openModal);
+btnCloseModal.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
