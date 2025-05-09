@@ -13,6 +13,11 @@ Este es un sencillo juego interactivo de **"Tira los Dados"**, donde dos jugador
 - Modal con instrucciones del juego.
 - Interfaz clara y amigable.
 
+## 🎆 Imágenes
+
+![Screen](screen.png)<br />
+![Instructions](instrucciones.png)
+
 ## 🚀 Cómo jugar
 
 1. **Abrir el juego:**
