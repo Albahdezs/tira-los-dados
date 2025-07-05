@@ -13,6 +13,7 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
+// Inicialización de variables que se actualizaran en el transcurso del juego
 let scores, currentScore, activePlayer, playing;
 
 // Configuración inicial
@@ -35,6 +36,7 @@ const init = function () {
 
 init();
 
+// Función para alternar a los jugadores
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
   currentScore = 0;
@@ -43,7 +45,7 @@ const switchPlayer = function () {
   player1El.classList.toggle('player--active');
 };
 
-// Funcionamidad de tirar el dado
+// Evento de tirar el dado
 btnRoll.addEventListener('click', function () {
   if (playing) {
     // 1. Generar un número aleatorio entre 1 y 6
@@ -67,6 +69,7 @@ btnRoll.addEventListener('click', function () {
   }
 });
 
+// Evento de guardar la puntuación 
 btnHold.addEventListener('click', function () {
   if (playing) {
     // 1. Agregar el puntaje actual al puntaje activo
@@ -84,9 +87,11 @@ btnHold.addEventListener('click', function () {
 
       document
         .querySelector(`.player--${activePlayer}`)
+        // Añade al CSS la clase
         .classList.add('player--winner');
       document
         .querySelector(`.player--${activePlayer}`)
+        // Añade al CSS la clase
         .classList.remove('player--active');
     } else {
       // Si no, cambiar al siguiente jugador
@@ -95,9 +100,10 @@ btnHold.addEventListener('click', function () {
   }
 });
 
+// Evento para juego nuevo
 btnNew.addEventListener('click', init);
 
-// Modal
+// ------> MODAL
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnInfo = document.querySelector('.btn--info');
